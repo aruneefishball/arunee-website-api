@@ -12,9 +12,9 @@ class EssayService {
         })
     }
 
-    getByPk(essayID) {
+    get(essayName) {
         return new Promise((resolve, reject) => {
-            db.query(`SELECT * FROM ${this.tableName} WHERE essayID = ?`, essayID, (error, result) => {
+            db.query(`SELECT * FROM ${this.tableName} WHERE essayName = ?`, essayName, (error, result) => {
                 if(error) throw error
                 resolve({success: true, message: "get essay success.", result: result[0] || null})
             })

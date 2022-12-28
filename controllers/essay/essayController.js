@@ -11,7 +11,7 @@ router.post('/add', authAdmin, async (req, res) => {
 
 // get "ESSAY"
 router.get('/', async (req, res) => {
-    const result = await essayService.getByPk(req.query.essayID)
+    const result = await essayService.get(req.query.essayName)
     res.status(200).json(result)
 })
 
