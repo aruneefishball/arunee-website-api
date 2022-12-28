@@ -12,7 +12,7 @@ app.use(cors())
 app.use("/api/v1/user", userController)
 app.use("/api/v1/essay", essayController)
 
-app.get("/", function (req, res) {
+app.get("/api/v1", function (req, res) {
 	res.status(200).json({
 		success: true,
 		message: "All you need is love.",
