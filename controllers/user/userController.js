@@ -4,11 +4,12 @@ const userService = require("./userService")
 
 // signup
 router.post('/signup', async (req, res) => {
-    const result = await userService.signup(req.body)
-    if(result.success) {
-        res.status(200).json(result)
-    }
-    res.status(409).json(result)
+    res.status(503).json({success: false, message: "Service Unavailable"})
+    // const result = await userService.signup(req.body)
+    // if(result.success) {
+    //     res.status(200).json(result)
+    // }
+    // res.status(409).json(result)
 })
 
 // signin
