@@ -4,7 +4,7 @@ class EssayService {
     tableName = 'ESSAY'
 
     async add(essayInput) {
-        const essay = await this.get(essayInput.essayName)
+        const essay = await this.getByName(essayInput.essayName).then(it => it.result)
         if(essay) return {success: false, message: "already use essay name."}
         return new Promise((resolve, reject) => {
             db.query(`INSERT INTO ${this.tableName} SET ?`, essayInput, (error, result) => {
