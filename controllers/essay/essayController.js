@@ -39,4 +39,10 @@ router.post('/update-order', authAdmin, async (req, res) => {
     res.status(200).json(result)
 })
 
+ 
+router.post('/delete', authAdmin, async (req, res) => {
+    const result = await essayService.deleteByPk(req.body.essayID)
+    res.status(200).json(result)
+})
+
 module.exports = router

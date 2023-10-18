@@ -24,5 +24,10 @@ router.get('/list', async (req, res) => {
     res.status(200).json(result)
 })
 
+router.post('/delete', authAdmin, async (req, res) => {
+    const result = await downloadService.deleteByPk(req.body.pictureID)
+    res.status(200).json(result)
+})
+
 
 module.exports = router

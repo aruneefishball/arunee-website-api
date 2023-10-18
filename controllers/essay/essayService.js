@@ -59,6 +59,15 @@ class EssayService {
         })
     }
 
+    deleteByPk(essayID) {
+        return new Promise((resolve, reject) => {
+            db.query(`DELETE FROM ${this.tableName} WHERE essayID = ?`, essayID, (error, result) => {
+                if(error) throw error
+                resolve({success: true, message: "delete essay success."})
+            })
+        })
+    }
+
     async updateOrder(essayID, essayOrder) {
         const targetEssay = await this.getByOrder(essayOrder).then(it => it.result)
         const causeEssay = await this.getByID(essayID).then(it => it.result)
@@ -68,6 +77,9 @@ class EssayService {
         await this.updateByPk(essayID, {essayOrder})
         return {success: true, message: "update essayOrder success."}
     }
+
+   
+    
 }
 
 module.exports = new EssayService();

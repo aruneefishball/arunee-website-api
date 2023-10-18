@@ -38,6 +38,15 @@ class DownloadService {
             })
         })
     }
+
+    deleteByPk(pictureID) {
+        return new Promise((resolve, reject) => {
+            db.query(`DELETE FROM ${this.tableName} WHERE pictureID = ?`, pictureID, (error, result) => {
+                if(error) throw error
+                resolve({success: true, message: "delete download success."})
+            })
+        })
+    }
 }
 
 module.exports = new DownloadService();
